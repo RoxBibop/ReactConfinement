@@ -1,0 +1,44 @@
+.signhisto {
+	background-color: rgb(255, 255, 255);
+	height : 100vh;
+	display: flex;
+	align-items: center;
+
+	justify-content: center;
+}
+
+.backBtn {
+	position: absolute;
+	top : 20px;
+	left : 20px;
+	padding : 10px 20px 10px 10px;
+	background-color: #2F3647;
+	display: flex;
+	align-items: center;
+	transition: .4s;
+}
+
+.backArrow {
+	height : 30px;
+	margin-right: 5px;
+	transition: .3s;
+}
+
+.backBtn:hover {
+	cursor: pointer;
+}
+.backBtn:hover .backArrow {
+	margin-right: 12px;
+}
+
+.backBtn p{
+	margin-top: 2px;
+	color : white;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.mainCtn {
+	height : 80%;
+	width : 60%;
+}
