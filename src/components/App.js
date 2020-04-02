@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './Login.jsx'
 import Sign from './Sign.jsx'
 import Form from './form.jsx'
+import SignHisto from './SignHisto.jsx'
 
 import '../style/App.css';
 
@@ -19,6 +20,13 @@ class App extends React.Component {
     this.setState(state => ({ isShow: "sign"}));
   }
 
+  closeSign = () => {
+    this.setState(state => ({ isShow: "login"}));
+  }
+
+  signHisto = () => {
+    this.setState(state => ({ isShow: "signHisto"}));
+  }
   render() {
     return (
       <div className="app">
@@ -29,7 +37,9 @@ class App extends React.Component {
             case 'teach' :
               return <Form/>;
             case 'sign' : 
-              return <Sign/>;
+              return <Sign logout={this.closeSign} signhisto={this.signHisto}/>;
+            case 'signHisto' : 
+              return <SignHisto logout={this.closeSign} back={this.toggleSign}/>;
           }
         })()}
       </div>

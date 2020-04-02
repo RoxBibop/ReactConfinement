@@ -1,0 +1,122 @@
+.sign {
+  height : 100vh;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.blockSign {
+  box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.18);
+}
+
+.date{
+  background-color: #2F3647;
+  color : white;
+  padding : 20px 35px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+}
+.hello
+{
+  margin-bottom: 5px;
+}
+
+.signText {
+  color : #2F3647;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btnBlock{
+  align-self: flex-start;
+  margin-top: 40px;
+}
+
+.extSign {
+  padding : 60px 130px 90px 130px;
+  background-color: white;
+  color : rgb(221, 221, 221);
+}
+
+.btnSign {
+  font-weight: 600;
+  box-sizing: border-box;
+  color : white;
+  background-color: #2F3647;
+  border : none;
+  padding : 16px 24px;
+}
+
+.btnSign:hover {
+  cursor: pointer;
+}
+
+.btnSave {
+  font-weight: 600;
+  color : #2F3647;
+  background-color: white;
+  box-shadow:0px 0px 0px 2px #2F3647 inset;
+  margin-left: 15px;
+}
+
+.url {
+  font-size : 12px;
+}
+
+.preview {
+  height : 60px;
+  width : auto;
+}
+
+.logout{
+  display: flex;
+  position : absolute;
+  bottom : 20px;
+  left : 20px;
+  align-items: center;
+}
+
+.logoutLogo {
+  height : 50px;
+  width : 50px;
+}
+
+.deco {
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  color : #2F3647;
+}
+
+.logout:hover{
+  cursor: pointer;
+}
+
+.btnHisto{
+  background-color: rgb(68, 75, 95);
+  position : absolute;
+  top : 20px;
+  right : 30px;
+  padding : 5px 29px;
+}
+
+.histoTxt{
+  margin : 0;
+  text-align: center;
+  color : #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+@media screen and (min-width: 1600px){
+  .extSign {
+    padding : 90px 160px 130px 160px;
+  }
+}
