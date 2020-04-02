@@ -53,10 +53,10 @@ class Login extends React.Component {
           </div>
           <p id="error"></p>
           <input disabled={this.state.disabled} type="submit" value="Se connecter" onClick={this.props.click}/>
-          {/* <div className="btns">
+          <div className="btns">
             <div className="button teacher" onClick={this.props.teacher}>Formateur</div>
             <div className="button student" onClick={this.props.sign}>Apprenant</div>
-          </div> */}
+          </div>
         </form>
       </div>
     );
