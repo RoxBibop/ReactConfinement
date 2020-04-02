@@ -7,60 +7,37 @@ class Login extends React.Component {
     super(props);
     this.state = { 
       disabled: true,
-      valueMail : '',
-      valuePassword : '',
     }
     this.verif = this.verif.bind(this);
   }
 
   verif = () => {
     const password = document.querySelector('#password'),
-          mail = document.querySelector('#mail'),
-          submit = document.querySelector('#submit'),
-          errorMail = document.querySelector('#errorMail'),
-          errorPassword = document.querySelector('#errorPassword'),
-          regexMail = /^[^\W][a-zA-Z0-9]+(.[a-zA-Z0-9]+)@[a-zA-Z0-9]+(.[a-zA-Z0-9]+).[a-zA-Z]{2,4}$/,
-          regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-    let verifMail = regexMail.test(this.state.valueMail),
-        verifPassword = regexPassword.test(this.state.valuePassword);
+    mail = document.querySelector('#mail'),
+    error = document.querySelector('#error'),
+    regexMail = /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/,
+    regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
-    this.setState({
-      valueMail:mail.value,
-      valuePassword:password.value
-    })
+    let verifMail = regexMail.test(mail.value),
+    verifPassword = regexPassword.test(password.value);
+    
+    console.log("change");
+
     if(verifMail === true && verifPassword === true)
     {
       this.setState({
         disabled: false
       })
+      error.innerHTML ="";
     }
-    if(verifMail === false && verifPassword === false)
+    if(verifMail === false || verifPassword === false)
     {
       this.setState({
         disabled: true
       })
+      error.innerHTML ="Vérifiez bien votre email ou votre mot de passe";
+      error.style.color = "#BD242E";
     }
-    if(verifMail === true)
-    {
-      errorMail.innerHTML ="Votre email est correct";
-      errorMail.style.color = "#22A742";
-    }
-    if(verifMail === false)
-    {
-      errorMail.innerHTML ="Vérifiez bien votre email";
-      errorMail.style.color = "#BD242E";
-    }
-    if(verifPassword === true)
-    {
-      errorPassword.innerHTML ="Votre mot de passe est correct";
-      errorPassword.style.color = "#22A742";
-    }
-    if(verifPassword === false)
-    {
-      errorPassword.innerHTML ="Votre mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial";
-      errorPassword.style.color = "#BD242E";
-    }
-    submit.disabled = this.state.disabled;
   }
 
   render(){
@@ -70,17 +47,16 @@ class Login extends React.Component {
         <p>Emargement numérique Simplon</p>
 
         <form onSubmit={this.props.submit} className="login">
+          <p id="error"></p>
           <div className="input">
             <label>Votre e-mail:</label>
             <input id="mail" type="email" name="email" onChange={this.verif}></input>
-            <p id="errorMail"></p>
           </div>
           <div className="input">
-            <label>Votre mot de passe:</label>
+            <label>Votre mot de passe (doit contenir au moins une majuscule, un chiffre et un caractère spécial):</label>
             <input id="password" type="password" name="password" onChange={this.verif}></input>
-            <p id="errorPassword"></p>
           </div>
-          <input id="submit" disabled type="submit" value="S'enregistrer" onClick={this.props.click}/>
+          <input disabled={this.state.disabled} type="submit" value="S'enregistrer" onClick={this.props.click}/>
         </form>
 
         <div className="button" onClick={this.props.teacher}>Formateur</div>
