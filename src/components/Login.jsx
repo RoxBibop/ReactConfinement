@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../style/login.css'
 
 class Login extends React.Component {
@@ -43,25 +43,21 @@ class Login extends React.Component {
   render(){
     return (
       <div className="login">
-
-        <p>Emargement numérique Simplon</p>
-
-        <form onSubmit={this.props.submit} className="login">
+        <form onSubmit={this.props.submit}>
+          <h2>Connexion</h2>
+          <div className="input">
+            <input id="mail" type="email" name="email" onChange={this.verif} placeholder="Email"></input>
+          </div>
+          <div className="input">
+            <input placeholder="Mot de passe" id="password" type="password" name="password" onChange={this.verif}></input>
+          </div>
           <p id="error"></p>
-          <div className="input">
-            <label>Votre e-mail:</label>
-            <input id="mail" type="email" name="email" onChange={this.verif}></input>
-          </div>
-          <div className="input">
-            <label>Votre mot de passe (doit contenir au moins une majuscule, un chiffre et un caractère spécial):</label>
-            <input id="password" type="password" name="password" onChange={this.verif}></input>
-          </div>
-          <input disabled={this.state.disabled} type="submit" value="S'enregistrer" onClick={this.props.click}/>
+          <input disabled={this.state.disabled} type="submit" value="Se connecter" onClick={this.props.click}/>
+          {/* <div className="btns">
+            <div className="button teacher" onClick={this.props.teacher}>Formateur</div>
+            <div className="button student" onClick={this.props.sign}>Apprenant</div>
+          </div> */}
         </form>
-
-        <div className="button" onClick={this.props.teacher}>Formateur</div>
-        <div className="button" onClick={this.props.sign}>Apprenant</div>
-
       </div>
     );
   }
