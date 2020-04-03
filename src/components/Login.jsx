@@ -1,5 +1,6 @@
 import React from 'react';
-import '../style/login.css'
+import '../style/login.css';
+import simplon from '../res/simplon.png';
 
 class Login extends React.Component {
 
@@ -58,6 +59,7 @@ class Login extends React.Component {
             <div className="button student" onClick={this.props.sign}>Apprenant</div>
           </div>
         </form>
+        <img src={simplon} alt="logo Simplon" className="logoSimplon"/>
       </div>
     );
   }
