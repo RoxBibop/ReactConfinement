@@ -27,11 +27,12 @@
 .backBtn:hover {
 	cursor: pointer;
 }
+
 .backBtn:hover .backArrow {
 	margin-right: 12px;
 }
 
-.backBtn p{
+.backBtn p {
 	margin-top: 2px;
 	color : white;
 	font-size: 16px;
