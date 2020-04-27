@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './style/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import 'semantic-ui-css/semantic.min.css'
+// import Globalize from 'globalize';
+// import globalizeLocalizer from 'react-widgets-globalize';
 
+// Globalize.locale('en');
+// initialize date fns
+// globalizeLocalizer();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App />,
   document.getElementById('root')
 );
 

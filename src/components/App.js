@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login.jsx'
 import Sign from './Sign.jsx'
-import Form from './form.jsx'
+import Form from './Form.jsx'
 import SignHisto from './SignHisto.jsx'
 
 import '../style/App.css';
@@ -9,7 +9,7 @@ import '../style/App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isShow : "login" };
+    this.state = { isShow : "teach" };
   }
 
   toggleTeacher = () => {
