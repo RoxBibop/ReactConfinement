@@ -64,7 +64,7 @@ class Sign extends React.Component {
         <div>
           <div className="blockSign">
             <div className="date">
-              <div className="hello">Bonjour jean michel.</div>
+              <div className="hello">Bonjour --Prénom--.</div>
               {this.state.currDate}
             </div>
             <div className="extSign">
