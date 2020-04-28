@@ -6,12 +6,11 @@
     height : 100vh;
     background-image: url("../res/lines.png");
     background-size: cover;
-    /* background-color: rgb(60, 255, 0); */
 }
 .bjr
 {
     position: absolute;
-    top: 10%;
+    top: 0%;
     left: 50%;
     transform: translate(-50%);
     margin: 0;
@@ -55,6 +54,7 @@
 .proms>p:hover
 {
     cursor: pointer;
+    user-select: none;
 }
 ul
 {
@@ -70,18 +70,6 @@ li
 {
     user-select: none;
 }
-.deconnection
-{
-    position: absolute;
-    bottom: 0;
-    color: black;
-    transition: .2s;
-}
-.deconnection:hover
-{
-    cursor: pointer;
-    color: white;
-}
 #new
 {
     transition: .2s;
@@ -89,5 +77,10 @@ li
 #new:hover
 {
     color: black;
+    font-weight: 600;
     cursor: pointer;
+}
+.new_Prog>input[type="submit"]
+{
+    width: 50%;
 }
