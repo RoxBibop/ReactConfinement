@@ -18,17 +18,20 @@ class Form extends React.Component {
 
   click = ()=> {
     const new_Prog = document.querySelector("#new");
+    const myProms = document.querySelector("#myProms");
     if(this.state.font == faSortDown)
     {
       this.setState({
         font: faSortUp
       })
+      myProms.classList.add('ulAppear')
     }
     else
     {
       this.setState({
         font: faSortDown
       })
+      myProms.classList.remove('ulAppear')
     }
   }
   render(){
@@ -40,7 +43,7 @@ class Form extends React.Component {
             <p id="new">+ Créer une promotion</p>
             <div className="proms">
               <p onClick={this.click}>Mes promotions <FontAwesomeIcon icon={this.state.font}/></p>
-              <ul>
+              <ul id="myProms">
                 <li>truc</li>
                 <li>machin</li>
                 <li>bidule</li>

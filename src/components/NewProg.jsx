@@ -19,13 +19,14 @@ class NewProg extends React.Component {
         <div className="dates">
           <div className="debut">
             <label>Début de formation:</label>
-            {/* <DateTimePicker></DateTimePicker> */}
+            <input type="date" name="" id=""/>
           </div>
           <div className="end">
             <label>Fin de formation:</label>
+            <input type="date" name="" id=""/>
           </div>
+          <div className=""></div>
         </div>
-        
       </form>
     );
   }

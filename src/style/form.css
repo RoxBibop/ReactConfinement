@@ -58,8 +58,17 @@
 }
 ul
 {
+    display: none;
     list-style: none;
     padding: 0;
+}
+.ulAppear
+{
+    display: block;
+}
+li
+{
+    user-select: none;
 }
 .deconnection
 {
