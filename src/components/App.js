@@ -35,7 +35,7 @@ class App extends React.Component {
             case 'login':
               return <Login teacher={this.toggleTeacher} sign={this.toggleSign}/>;
             case 'teach' :
-              return <Form/>;
+              return <Form logout={this.closeSign}/>;
             case 'sign' : 
               return <Sign logout={this.closeSign} signhisto={this.signHisto}/>;
             case 'signHisto' : 
