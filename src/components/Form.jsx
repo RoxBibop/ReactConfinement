@@ -11,7 +11,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      isShow: "new_prog",
+      isShow: 'new_prog',
       font: faSortDown,
       currDate : this.date()
     }
@@ -59,6 +59,27 @@ class Form extends React.Component {
     }
   }
 
+  clickLi = (e)=> {
+    if(e.target.dataset.id == 'truc')
+    this.setState({
+      isShow: 'truc'
+    })
+    else if(e.target.dataset.id == 'machin')
+    this.setState({
+      isShow: 'machin'
+    })
+    else if(e.target.dataset.id == 'bidule')
+    this.setState({
+      isShow: 'bidule'
+    })
+  }
+
+  clickProm = ()=> {
+    this.setState({
+      isShow: 'new_prog'
+    })
+  }
+
   componentDidMount() {
     setInterval(() => {
       this.setState({ currDate : this.date()})
@@ -74,13 +95,13 @@ class Form extends React.Component {
         </div>
         <div className="dashboard_T">
           <div className="menu_dash">
-            <p id="new">+ Créer une promotion</p>
+            <p onClick={this.clickProm} id="new">+ Créer une promotion</p>
             <div className="proms">
               <p onClick={this.clickUl}>Mes promotions <FontAwesomeIcon icon={this.state.font}/></p>
               <ul id="myProms">
-                <li>truc</li>
-                <li>machin</li>
-                <li>bidule</li>
+                <li data-id="truc" onClick={this.clickLi}>truc</li>
+                <li data-id="machin" onClick={this.clickLi}>machin</li>
+                <li data-id="bidule" onClick={this.clickLi}>bidule</li>
               </ul>
             </div>
           </div>
@@ -89,6 +110,12 @@ class Form extends React.Component {
               switch (this.state.isShow) {
                 case 'new_prog':
                 return <NewProg></NewProg>
+                case 'truc':
+                return <div>truc</div>
+                case 'machin':
+                return <div>machin</div>
+                case 'bidule':
+                return <div>bidule</div>
               }
             })()}
           </div>

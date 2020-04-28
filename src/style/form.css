@@ -70,17 +70,56 @@ li
 {
     user-select: none;
 }
+svg
+{
+    width: 20px !important;
+}
 #new
 {
     transition: .2s;
 }
 #new:hover
 {
-    color: black;
+    color: #2F3647;
     font-weight: 600;
     cursor: pointer;
 }
 .new_Prog>input[type="submit"]
 {
+    width: 40%;
+}
+.new_Prog
+{
+    width: 70%;
+    height: 100%;
+    color: #2F3647;
+}
+.new_Prog>div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.time>div, .dates>div, .prog_name>div
+{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 14px;
+}
+input[name="prog_name"]
+{
     width: 50%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #2F3647;
+    outline: none;
+    font-size: 15px;
+}
+input
+{
+    outline: none;
 }

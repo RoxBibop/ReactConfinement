@@ -15,29 +15,35 @@ class NewProg extends React.Component {
       <form className="new_Prog">
         <h2>Nouvelle formation</h2>
         <div className="prog_name">
-          <label>Nom de la formation</label>
-          <input type="text" name="prog_name" placeholder="ex: Ma formation"></input>
+          <div>
+            <label>Nom de la formation :</label>
+            <input type="text" name="prog_name" placeholder="ex: Ma formation"></input>
+          </div>
         </div>
         <div className="dates">
           <div className="debut">
-            <label>Début de formation:</label>
+            <label>Début de formation :</label>
             <input type="date" name="" id=""/>
           </div>
           <div className="end">
-            <label>Fin de formation:</label>
+            <label>Fin de formation :</label>
             <input type="date" name="" id=""/>
           </div>
         </div>
         <div className="time">
-          <div>
-            <label>Signature du matin:</label>
-            <input type="time" id="" name="" min="09:00" max="12:00"></input>
-            <input type="time" id="" name="" min="09:00" max="12:00"></input>
+          <div className="morning">
+            <label>Signature du matin :</label>
+            <div>
+              <input type="time" id="" name="" min="09:00" max="12:00"></input>
+              <input type="time" id="" name="" min="09:00" max="12:00"></input>
+            </div>
           </div>
-          <div>
-            <label>Signature de l'après-midi:</label>
-            <input type="time" id="" name="" min="13:00" max="17:00"></input>
-            <input type="time" id="" name="" min="13:00" max="17:00"></input>
+          <div className="afternoon">
+            <label>Signature de l'après-midi :</label>
+            <div>
+              <input type="time" id="" name="" min="13:00" max="17:00"></input>
+              <input type="time" id="" name="" min="13:00" max="17:00"></input>
+            </div>
           </div>
         </div>
         <input type="submit"></input>
