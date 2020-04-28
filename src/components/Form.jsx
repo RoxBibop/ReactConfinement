@@ -4,6 +4,7 @@ import NewProg from './NewProg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp } from '@fortawesome/free-solid-svg-icons';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import logout from '../res/logoutLogo.png'
 
 class Form extends React.Component {
 
@@ -11,13 +12,36 @@ class Form extends React.Component {
     super(props);
     this.state = { 
       isShow: "new_prog",
-      font: faSortDown
+      font: faSortDown,
+      currDate : this.date()
     }
-    this.click = this.click.bind(this);
+    this.clickUl = this.clickUl.bind(this);
   }
 
-  click = ()=> {
-    const new_Prog = document.querySelector("#new");
+  date = () => {
+    let globalDate = new Date(),
+        months = ["janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"],
+        days = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+        year = globalDate.getFullYear(),
+        month = globalDate.getMonth(),
+        day = globalDate.getDay(),
+        dayNb = globalDate.getDate(),
+        hour = this.formatedDate(globalDate.getHours()),
+        min = this.formatedDate(globalDate.getMinutes()),
+        sec = this.formatedDate(globalDate.getSeconds());
+  
+    return `Nous sommes le ${days[day]} ${dayNb} ${months[month]} ${year} - ${hour} : ${min} : ${sec}`;
+  }
+
+  formatedDate(number) {
+    if(number.toString().length < 2){
+      return "0"+number;
+    }else{
+      return number;
+    }
+  }
+
+  clickUl = ()=> {
     const myProms = document.querySelector("#myProms");
     if(this.state.font == faSortDown)
     {
@@ -34,22 +58,31 @@ class Form extends React.Component {
       myProms.classList.remove('ulAppear')
     }
   }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ currDate : this.date()})
+    }, 1000);
+  }
+
   render(){
     return (
       <div className="form">
-        <p className="bjr">Bonjour ...</p>
+        <div className="date bjr">
+          <div className="hello">Bonjour --Prénom--.</div>
+          {this.state.currDate}
+        </div>
         <div className="dashboard_T">
           <div className="menu_dash">
             <p id="new">+ Créer une promotion</p>
             <div className="proms">
-              <p onClick={this.click}>Mes promotions <FontAwesomeIcon icon={this.state.font}/></p>
+              <p onClick={this.clickUl}>Mes promotions <FontAwesomeIcon icon={this.state.font}/></p>
               <ul id="myProms">
                 <li>truc</li>
                 <li>machin</li>
                 <li>bidule</li>
               </ul>
             </div>
-            <p className="deconnection">Déconnexion</p>
           </div>
           <div className="dash">
             {(()=> {
@@ -59,6 +92,10 @@ class Form extends React.Component {
               }
             })()}
           </div>
+        </div>
+        <div className="logout" onClick={this.props.logout}>
+          <img src={logout} alt="Logo de déconnexion" className="logoutLogo"/>
+          <p className="deco">Déconnexion</p>
         </div>
       </div>
     );
