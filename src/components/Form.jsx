@@ -86,6 +86,13 @@ class Form extends React.Component {
     }, 1000);
   }
 
+  async componentDidMount() {
+    const url = "https://gimzicicd.herokuapp.com/public/api/promotions";
+    const response = await fetch(url);
+    const promos = await response.json();
+    console.log(promos);
+  }
+
   render(){
     return (
       <div className="form">
