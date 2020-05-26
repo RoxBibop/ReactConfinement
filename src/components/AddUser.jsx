@@ -36,17 +36,19 @@ class AddUser extends React.Component {
           this.state.inputs.map((inp, index)=>{
             return (
               <div className="inputs" key={index}>
-                <div>
-                  <label>Nom :</label>
-                  <input onChange={(e) => this.change(e, index)} id="name" type="name" value={inp}/>
-                </div>
-                <div>
-                  <label>Prénom :</label>
-                  <input onChange={(e) => this.change(e, index)} id="lastname" type="lastname" value={inp}/>
-                </div>
-                <div>
-                  <label>Mail :</label>
-                  <input onChange={(e) => this.change(e, index)} id="email" type="mail" name="email" value={inp}/>
+                <div className="inputContainer">
+                  <div>
+                    <label>Nom :</label>
+                    <input onChange={(e) => this.change(e, index)} id="name" type="name" value={inp}/>
+                  </div>
+                  <div>
+                    <label>Prénom :</label>
+                    <input onChange={(e) => this.change(e, index)} id="lastname" type="lastname" value={inp}/>
+                  </div>
+                  <div>
+                    <label>Mail :</label>
+                    <input onChange={(e) => this.change(e, index)} id="email" type="mail" name="email" value={inp}/>
+                  </div>
                 </div>
                 <p className="trash">
                   <FontAwesomeIcon onClick={() => this.deleteUser(index)} icon={faTrash}/>

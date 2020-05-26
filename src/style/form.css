@@ -216,27 +216,22 @@ button:hover{
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	flex-direction: column;
-	width: 100%;
+	width: 60%;
 	margin: 15px;
 	color: #2F3647;
 }
-.inputs>div
+.inputContainer
 {
 	position: relative;
-	width: 50%;
+	width: 80%;
+	margin: 5px;
+}
+.inputs>div>div
+{
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	margin: 5px;
-}
-.trash
-{
-	position: absolute;
-	top: 50%;
-	right: 15%;
-	transform: translateY(-50%);
-	padding: 0;
-	margin: 0;
 }
 .fa-trash, .fa-plus
 {
