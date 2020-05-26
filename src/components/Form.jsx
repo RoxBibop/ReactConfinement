@@ -95,11 +95,11 @@ class Form extends React.Component {
   render(){
     return (
       <div className="form">
-        <div className="date bjr">
-          <div className="hello">Bonjour --Prénom--.</div>
-          {this.state.currDate}
-        </div>
         <div className="dashboard_T">
+          <div className="date bjr">
+            <div className="hello">Bonjour --Prénom--.</div>
+            {this.state.currDate}
+          </div>
           <div className="menu_dash">
             <p onClick={this.clickProm} id="new">+ Créer une promotion</p>
             <div className="proms">
