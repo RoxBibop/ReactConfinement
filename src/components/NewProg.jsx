@@ -60,7 +60,7 @@ class NewProg extends React.Component {
 
   render() { 
     return ( 
-      <div>
+      <div className="formContainer">
         {(()=> {
           switch (this.state.currentStepper) {
             case 1 :
@@ -69,9 +69,11 @@ class NewProg extends React.Component {
             return <AddUser></AddUser>
           }
         })()}
-        <button id="next" hidden={this.state.nextHidden} onClick={this.clickNext}>Suivant</button>
-        <button id="previous" hidden={this.state.previousHidden} onClick={this.clickPrevious}>Précédent</button>
-        <button id="save" hidden={this.state.saveHidden} onClick={this.clickSave}>Enregistrer</button>
+        <div className="btnsForm">
+          <button id="next" hidden={this.state.nextHidden} onClick={this.clickNext}>Suivant</button>
+          <button id="previous" hidden={this.state.previousHidden} onClick={this.clickPrevious}>Précédent</button>
+          <button id="save" hidden={this.state.saveHidden} onClick={this.clickSave}>Enregistrer</button>
+        </div>
       </div>
     );
   }

@@ -1,12 +1,19 @@
 .form {
 	display: flex;
 	justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  align-items: center;
+  flex-direction: column;
 	width: 100%;
 	height : 100vh;
 	background-image: url("../res/lines.png");
 	background-size: cover;
+}
+.formContainer
+{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .dashboard_T
 {
@@ -83,7 +90,7 @@ svg
 }
 .new_Prog
 {
-	width: 70%;
+	width: 100%;
 	height: 100%;
 	color: #2F3647;
 }
@@ -115,4 +122,29 @@ input[name="prog_name"]
 input
 {
 	outline: none;
+}
+.btnsForm
+{
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+button
+{
+	background-color: #B81828;
+	color: white;
+	border-radius: 100px;
+	padding: 10px 20px;
+	outline: none;
+	transition: .2s;
+	font-size: 16px;
+	border: 2px #B81828 solid;
+	font-family: "Cabin";
+}
+button:hover{
+	background-color: white;
+	border: 2px #B81828 solid;
+	color: #B81828;
+	cursor: pointer;
 }
