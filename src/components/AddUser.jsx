@@ -57,9 +57,7 @@ class AddUser extends React.Component {
             )
           })
         }
-        <p>
-          <FontAwesomeIcon className="btnAdd" onClick={(e) => this.addUser(e)} icon={faPlus}/>
-        </p>
+        <FontAwesomeIcon className="btnAdd" onClick={(e) => this.addUser(e)} icon={faPlus}/>
       </div>
     );
   }
