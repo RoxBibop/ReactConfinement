@@ -1,5 +1,7 @@
 import React, { Children } from 'react';
 import 'react-widgets/dist/css/react-widgets.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 // import '../style/adduser.css';
 
 class AddUser extends React.Component {
@@ -33,14 +35,29 @@ class AddUser extends React.Component {
         {
           this.state.inputs.map((inp, index)=>{
             return (
-              <div key={index}>
-                <input onChange={(e) => this.change(e, index)} value={inp}></input>
-                <p onClick={() => this.deleteUser(index)}>delete</p>
+              <div className="inputs" key={index}>
+                <div>
+                  <label>Nom :</label>
+                  <input onChange={(e) => this.change(e, index)} id="name" type="name" value={inp}/>
+                </div>
+                <div>
+                  <label>Prénom :</label>
+                  <input onChange={(e) => this.change(e, index)} id="lastname" type="lastname" value={inp}/>
+                </div>
+                <div>
+                  <label>Mail :</label>
+                  <input onChange={(e) => this.change(e, index)} id="email" type="mail" name="email" value={inp}/>
+                </div>
+                <p className="trash">
+                  <FontAwesomeIcon onClick={() => this.deleteUser(index)} icon={faTrash}/>
+                </p>
               </div>
             )
           })
         }
-        <p onClick={(e) => this.addUser(e)}>AJOUTER</p>
+        <p>
+          <FontAwesomeIcon className="btnAdd" onClick={(e) => this.addUser(e)} icon={faPlus}/>
+        </p>
       </div>
     );
   }

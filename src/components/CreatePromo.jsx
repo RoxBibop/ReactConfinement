@@ -12,7 +12,6 @@ class CreatePromo extends React.Component {
 
   render() { 
     return ( 
-      <div>
         <form className="new_Prog">
           <h2>Nouvelle formation</h2>
           <div className="prog_name">
@@ -49,7 +48,6 @@ class CreatePromo extends React.Component {
             <div className=""></div>
           </div>
         </form>
-      </div>
     );
   }
 }
