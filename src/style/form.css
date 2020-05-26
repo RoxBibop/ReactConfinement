@@ -149,3 +149,23 @@ button:hover{
 	color: #B81828;
 	cursor: pointer;
 }
+.inputRow
+{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.add
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+.inputRow>input
+{
+    border: none;
+    border-bottom: 1px solid #2F3647;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
