@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/form.css'
+import '../style/form.css';
 import NewProg from './NewProg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp } from '@fortawesome/free-solid-svg-icons';
