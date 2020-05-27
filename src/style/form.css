@@ -139,7 +139,7 @@ input
 	display: flex;
 	justify-content: center;
 }
-button
+.btnsForm>button
 {
 	background-color: #B81828;
 	color: white;
@@ -152,7 +152,7 @@ button
 	font-family: "Cabin";
 	margin: 10px;
 }
-button:hover{
+.btnsForm>button:hover{
 	background-color: white;
 	border: 2px #B81828 solid;
 	color: #B81828;
