@@ -26,20 +26,19 @@ class Login extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
-    let bodyRequest = {
-      "email": email,
-      "password": password
-    };
 
     try {
       const url = 'https://ancient-journey-28500.herokuapp.com/authentication_token';
       let result = await fetch(url, {
-        method : 'post',
+        method : 'POST',
         headers: {
           'Accept' : 'application/json',
           'Content-type': 'application/json',
         },
-        body: bodyRequest
+        body:  JSON.stringify({
+          "email": 'admin@admin.com',
+          "password":'admin'
+        })
       });
       console.log('BRAVO' + result);
     } catch(e) {
