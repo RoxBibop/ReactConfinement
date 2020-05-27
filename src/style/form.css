@@ -248,3 +248,8 @@ button:hover{
 	border: none;
 	border-bottom: 1px solid black;
 }
+.num
+{
+	color: #B81828;
+	font-weight: bold;
+}

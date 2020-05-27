@@ -36,6 +36,7 @@ class AddUser extends React.Component {
           this.state.inputs.map((inp, index)=>{
             return (
               <div className="inputs" key={index}>
+                <span className="num">{index + 1}</span>
                 <div className="inputContainer">
                   <div>
                     <label>Nom :</label>
