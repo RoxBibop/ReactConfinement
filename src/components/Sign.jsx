@@ -19,21 +19,25 @@ class Sign extends React.Component {
   }
 
   async trim(){
-    var url = "https://ancient-journey-28500.herokuapp.com/api/presences";
-    var fetch = await fetch(url, {
-      method: 'post',
-      mode: 'no-cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body:JSON.stringify({
-        "date": this.state.currDate,
-        "signature": this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
-        "user": ""
-      })
-    })
-    console.log(fetch)
+    try {
+      var url = "https://ancient-journey-28500.herokuapp.com/api/presences";
+      var result = await fetch(url, {
+        method: 'post',
+        mode: 'no-cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          "date": this.state.currDate,
+          "signature": this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
+          "user": ""
+        })
+      });
+      console.log(result)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   date = () => {
