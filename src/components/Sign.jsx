@@ -31,7 +31,7 @@ class Sign extends React.Component {
         body: JSON.stringify({
           "date": this.state.currDate,
           "signature": this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
-          "user": ""
+          "user": this.props.user
         })
       });
       console.log(result)

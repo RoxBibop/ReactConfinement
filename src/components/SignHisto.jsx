@@ -5,7 +5,13 @@ import arrow from '../res/arrow.png';
 import logout from '../res/logoutLogo.png';
 
 class SignHisto extends React.Component {
-	render() {   
+	async componentDidMount(){
+		const url = "https://ancient-journey-28500.herokuapp.com/api/presences";
+		const response = await fetch(url);
+		const signatures = await response.json();
+		console.log(signatures);
+	} 
+	render() {  
     return (
 			<div className='signhisto'>
 				<div onClick={this.props.back} className="backBtn">
