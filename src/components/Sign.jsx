@@ -7,6 +7,7 @@ class Sign extends React.Component {
   constructor(props) {
     super(props);
     this.state = { currDate : this.date() };
+    this.trim = this.trim.bind(this);
   }
 
   state = { trimmedDataURL: null }
@@ -17,8 +18,22 @@ class Sign extends React.Component {
     this.sigPad.clear()
   }
 
-  trim = () => {
-    this.setState({ trimmedDataURL: this.sigPad.getTrimmedCanvas().toDataURL('image/png') })
+  async trim(){
+    var url = "https://ancient-journey-28500.herokuapp.com/api/presences";
+    var fetch = await fetch(url, {
+      method: 'post',
+      mode: 'no-cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body:JSON.stringify({
+        "date": this.state.currDate,
+        "signature": this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
+        "user": ""
+      })
+    })
+    console.log(fetch)
   }
 
   date = () => {
