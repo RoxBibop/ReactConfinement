@@ -181,7 +181,7 @@ input
 .stepperTwo
 {
 	position: relative;
-	width: 80%;
+	width: 90%;
 	height: 80%;
 	overflow-y: scroll;
 	display: flex;
@@ -216,15 +216,18 @@ input
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	width: 60%;
+	width: 100%;
 	margin: 15px;
 	color: #2F3647;
 }
 .inputContainer
 {
 	position: relative;
-	width: 80%;
+	width: 100%;
 	margin: 5px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
 .inputs>div>div
 {
@@ -232,7 +235,9 @@ input
 	display: flex;
 	justify-content: space-between;
 	margin: 5px;
+	width: 30%;
 }
+
 .fa-trash, .fa-plus
 {
 	transition: .2s;
@@ -243,10 +248,28 @@ input
 	cursor: pointer;
 	color: #B81828;
 }
-.inputs>div>input
+.inputs>div>div>input
 {
 	border: none;
 	border-bottom: 1px solid black;
+	height: 25px;
+	width: 70%;
+}
+.inputs>div>div>label
+{
+	height: 25px;
+}
+.inputs>div>div:nth-child(3)
+{
+	width: 35%;
+}
+.inputs>div>div:nth-child(1)
+{
+	width: 25%;
+}
+.inputs>div>div:nth-child(2)>label
+{
+	width: 50%;
 }
 .num
 {
