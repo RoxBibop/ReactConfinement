@@ -14,6 +14,7 @@ class App extends React.Component {
       role : ""
     };
   }
+  
   callbackFunction = (childData) => {
     this.setState({role: childData})
     if(this.state.role.includes('ROLE_ADMIN')) {
@@ -22,6 +23,7 @@ class App extends React.Component {
       this.setState({isShow: "sign"})
     }
   }
+
   toggleTeacher = () => {
     this.setState(state => ({ isShow: "teach"}));
   }

@@ -2,6 +2,8 @@ import React from 'react';
 import '../style/login.css';
 import simplon from '../res/simplon.png';
 import jwt from 'jwt-decode';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner, faSpin } from '@fortawesome/free-solid-svg-icons';
 
 class Login extends React.Component {
 
@@ -12,7 +14,8 @@ class Login extends React.Component {
       password : "",
       loginError : "",
       disabled: true,
-      role : ""
+      role : "",
+      loading : false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +29,9 @@ class Login extends React.Component {
   }
 
   async handleSubmit(e) {
+    this.setState({loading : true})
     e.preventDefault();
+
     const { email, password } = this.state;
 
     try {
@@ -61,7 +66,11 @@ class Login extends React.Component {
     this.props.callback(this.state.role)
   }
 
+
+
   render(){
+    const {loading} = this.state;
+
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit}>
@@ -89,7 +98,10 @@ class Login extends React.Component {
             </input>
           </div>
           <p id="error"></p>
-          <input type="submit" value="Se connecter"/>
+          <div hidden={!loading}>
+            <FontAwesomeIcon icon={faSpinner} pulse/>
+          </div>
+          <input type="submit" value="Se connecter" hidden={loading}/>
           <div className="btns">
             <div className="button teacher" onClick={this.props.teacher}>Formateur</div>
             <div className="button student" onClick={this.props.sign}>Apprenant</div>
