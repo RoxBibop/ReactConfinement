@@ -1,6 +1,7 @@
 import React from 'react';
 import '../style/login.css';
 import simplon from '../res/simplon.png';
+import jwt from 'jwt-decode';
 
 class Login extends React.Component {
 
@@ -11,6 +12,7 @@ class Login extends React.Component {
       password : "",
       loginError : "",
       disabled: true,
+      role : ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,17 +42,23 @@ class Login extends React.Component {
           "password": password
         })
       }).then( (res) => {
-
         console.log('response: ', res);
+
         return res.json();
       }).then( (result) =>{
-        console.log(result);
+        const user = jwt(result.token);
+        console.log(user);
+        this.setState({
+          role : user.roles
+        })
       });
 
     } catch(e) {
       console.log("%c ERROR :", "color : red; font-size:20px;")
       console.log(e);
     }
+
+    this.props.callback(this.state.role)
   }
 
   render(){

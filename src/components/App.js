@@ -9,9 +9,19 @@ import '../style/App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isShow : "login" };
+    this.state = { 
+      isShow : "login" ,
+      role : ""
+    };
   }
-
+  callbackFunction = (childData) => {
+    this.setState({role: childData})
+    if(this.state.role.includes('ROLE_ADMIN')) {
+      this.setState({isShow: "teach"})
+    }else{
+      this.setState({isShow: "sign"})
+    }
+  }
   toggleTeacher = () => {
     this.setState(state => ({ isShow: "teach"}));
   }
@@ -33,7 +43,7 @@ class App extends React.Component {
         {(() => {
           switch(this.state.isShow){
             case 'login':
-              return <Login teacher={this.toggleTeacher} sign={this.toggleSign}/>;
+              return <Login teacher={this.toggleTeacher} sign={this.toggleSign} callback={this.callbackFunction}/>;
             case 'teach' :
               return <Form logout={this.closeSign}/>;
             case 'sign' : 
