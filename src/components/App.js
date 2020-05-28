@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = { 
       isShow : "login" ,
+      token : "",
       role : ""
     };
   }

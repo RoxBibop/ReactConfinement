@@ -15,6 +15,7 @@ class Login extends React.Component {
       loginError : true,
       disabled: true,
       role : "",
+      token : "",
       loading : false
     }
 
@@ -47,11 +48,12 @@ class Login extends React.Component {
           "email": email,
           "password": password
         })
-      }).then( (res) => {
+      }).then( (res) => { 
         console.log('response: ', res);
-
         return res.json();
+
       }).then( (result) =>{
+        window.sessionStorage.setItem("token", result.token);
         const user = jwt(result.token);
         this.setState({
           role : user.roles
@@ -104,10 +106,10 @@ class Login extends React.Component {
           </div>
           <input type="submit" value="Se connecter" hidden={loading}/>
           <p id="error" hidden={loginError}>Email ou mot de passe incorrect</p>
-          <div className="btns">
+          {/* <div className="btns">
             <div className="button teacher" onClick={this.props.teacher}>Formateur</div>
             <div className="button student" onClick={this.props.sign}>Apprenant</div>
-          </div>
+          </div> */}
         </form>
         <img src={simplon} alt="logo Simplon" className="logoSimplon"/>
       </div>

@@ -86,10 +86,25 @@ class Form extends React.Component {
       this.setState({ currDate : this.date()})
     }, 1000);
 
-    const url = "https://gimzicicd.herokuapp.com/public/api/promotions";
-    const response = await fetch(url);
-    const promos = await response.json();
-    console.log(promos);
+    const userToken = window.sessionStorage.getItem('token')
+
+    const url = "https://ancient-journey-28500.herokuapp.com/api/users",
+          headers = {
+            'Accept' : 'application/json',
+            'Content-type': 'application/json',
+            'Authorize' : userToken
+          };
+
+    fetch(url, {headers})
+      .then( async response => { 
+        const data = await response.json();
+
+        console.log("OK :")
+        console.log(data);
+      })
+      .catch(error => {
+        console.log ('%c ERROR A CAUSE DES CORS DE MERDE TRES CERTAINEMENT', 'font-size:32px; color:red;')
+      })
   }
 
   render(){
