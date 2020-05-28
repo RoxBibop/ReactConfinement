@@ -36,11 +36,17 @@ class Login extends React.Component {
           'Content-type': 'application/json',
         },
         body:  JSON.stringify({
-          "email": 'admin@admin.com',
-          "password":'admin'
+          "email": email,
+          "password": password
         })
+      }).then( (res) => {
+
+        console.log('response: ', res);
+        return res.json();
+      }).then( (result) =>{
+        console.log(result);
       });
-      console.log('BRAVO' + result);
+
     } catch(e) {
       console.log("%c ERROR :", "color : red; font-size:20px;")
       console.log(e);

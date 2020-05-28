@@ -14,6 +14,7 @@ class NewProg extends React.Component {
       nextHidden: false,
       previousHidden: true,
       saveHidden: true,
+      
     }
     this.clickNext = this.clickNext.bind(this);
     this.clickPrevious = this.clickPrevious.bind(this);
