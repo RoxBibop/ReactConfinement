@@ -12,7 +12,7 @@ class Login extends React.Component {
     this.state = { 
       email : "",
       password : "",
-      loginError : "",
+      loginError : true,
       disabled: true,
       role : "",
       loading : false
@@ -30,6 +30,7 @@ class Login extends React.Component {
 
   async handleSubmit(e) {
     this.setState({loading : true})
+    this.setState({loginError: true})
     e.preventDefault();
 
     const { email, password } = this.state;
@@ -52,13 +53,14 @@ class Login extends React.Component {
         return res.json();
       }).then( (result) =>{
         const user = jwt(result.token);
-        console.log(user);
         this.setState({
           role : user.roles
         })
       });
 
     } catch(e) {
+      this.setState({loading : false})
+      this.setState({loginError: false})
       console.log("%c ERROR :", "color : red; font-size:20px;")
       console.log(e);
     }
@@ -69,7 +71,7 @@ class Login extends React.Component {
 
 
   render(){
-    const {loading} = this.state;
+    const {loading, loginError} = this.state;
 
     return (
       <div className="login">
@@ -97,11 +99,11 @@ class Login extends React.Component {
               required>
             </input>
           </div>
-          <p id="error"></p>
           <div hidden={!loading}>
             <FontAwesomeIcon icon={faSpinner} pulse/>
           </div>
           <input type="submit" value="Se connecter" hidden={loading}/>
+          <p id="error" hidden={loginError}>Email ou mot de passe incorrect</p>
           <div className="btns">
             <div className="button teacher" onClick={this.props.teacher}>Formateur</div>
             <div className="button student" onClick={this.props.sign}>Apprenant</div>

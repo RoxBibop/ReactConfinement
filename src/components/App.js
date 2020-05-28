@@ -14,12 +14,14 @@ class App extends React.Component {
       role : ""
     };
   }
-  
+
   callbackFunction = (childData) => {
     this.setState({role: childData})
     if(this.state.role.includes('ROLE_ADMIN')) {
       this.setState({isShow: "teach"})
-    }else{
+    }else if (!this.state.role.includes('ROLE_USER')){
+      this.setState({isShow: "login"})
+    }else {
       this.setState({isShow: "sign"})
     }
   }

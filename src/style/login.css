@@ -117,6 +117,9 @@ input[type="submit"]
 #error
 {
   font-size: 15px;
+  color : #CE0033;
+  margin : 0;
+  margin-top : 12px;
 }
 .btns
 {
