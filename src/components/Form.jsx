@@ -13,7 +13,7 @@ class Form extends React.Component {
     this.state = { 
       isShow: 'new_prog',
       font: faSortDown,
-      currDate : this.date()
+      currDate : this.date(),
     }
     this.clickUl = this.clickUl.bind(this);
   }
@@ -86,21 +86,20 @@ class Form extends React.Component {
       this.setState({ currDate : this.date()})
     }, 1000);
 
-    const userToken = window.sessionStorage.getItem('token')
-
-    const url = "https://ancient-journey-28500.herokuapp.com/api/users",
+    const userToken = window.sessionStorage.getItem('token'),
+          url = "https://ancient-journey-28500.herokuapp.com/api/promotions",
           headers = {
             'Accept' : 'application/json',
             'Content-type': 'application/json',
-            'Authorize' : userToken
+            'Authorization' : 'Bearer ' + userToken
           };
 
     fetch(url, {headers})
       .then( async response => { 
-        const data = await response.json();
+        const allPromotions = await response.json();
+        this.setState({allPromotions : allPromotions})
 
-        console.log("OK :")
-        console.log(data);
+        console.log(this.state.allPromotions)
       })
       .catch(error => {
         console.log ('%c ERROR A CAUSE DES CORS DE MERDE TRES CERTAINEMENT', 'font-size:32px; color:red;')

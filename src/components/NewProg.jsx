@@ -14,14 +14,14 @@ class NewProg extends React.Component {
       nextHidden: false,
       previousHidden: true,
       saveHidden: true,
-      
+      promoData : "",
+      allPromotions : "",
     }
     this.clickNext = this.clickNext.bind(this);
     this.clickPrevious = this.clickPrevious.bind(this);
   }
   
-  clickNext()
-  {
+  clickNext(){
     this.stepper ++
     this.setState({
       currentStepper: this.stepper
@@ -37,8 +37,7 @@ class NewProg extends React.Component {
     }
   }
 
-  clickPrevious()
-  {
+  clickPrevious(){
     this.stepper --
     this.setState({
       currentStepper: this.stepper
@@ -54,9 +53,14 @@ class NewProg extends React.Component {
     }
   }
 
-  clickSave()
-  {
-    // send json with POST
+  getPromoData = (childData) => {
+    this.setState({promoData: childData}, this.leconsoledeux)
+  }
+
+  leconsoledeux() {
+    console.log("CONFIGURATOR NEW PROG")
+    console.log(this.state.promoData);
+    console.log("CONFIGURATOR NEW PROG")
   }
 
   render() { 
@@ -65,7 +69,7 @@ class NewProg extends React.Component {
         {(()=> {
           switch (this.state.currentStepper) {
             case 1 :
-            return <CreatePromo></CreatePromo>
+            return <CreatePromo promoData={this.getPromoData}></CreatePromo>
             case 2 :
             return <AddUser></AddUser>
           }
