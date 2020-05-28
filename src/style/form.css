@@ -252,12 +252,8 @@ input
 {
 	border: none;
 	border-bottom: 1px solid black;
-	height: 25px;
+	height: 15px;
 	width: 70%;
-}
-.inputs>div>div>label
-{
-	height: 25px;
 }
 .inputs>div>div:nth-child(3)
 {

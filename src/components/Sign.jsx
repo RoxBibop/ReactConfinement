@@ -1,7 +1,8 @@
 import React from 'react';
-import SignatureCanvas from 'react-signature-canvas'
-import '../style/sign.css'
-import logout from '../res/logoutLogo.png'
+import SignatureCanvas from 'react-signature-canvas';
+import '../style/sign.css';
+import jwt from 'jwt-decode';
+import logout from '../res/logoutLogo.png';
 
 class Sign extends React.Component {
   constructor(props) {
@@ -19,22 +20,29 @@ class Sign extends React.Component {
   }
 
   async trim(){
+    const date = new Date(),
+          date_formater = date.toISOString(),
+          signature = this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
+          token = window.sessionStorage.getItem("token"),
+          user = jwt(token),
+          userId = user.userId;
     try {
       var url = "https://ancient-journey-28500.herokuapp.com/api/presences";
       var result = await fetch(url, {
-        method: 'post',
+        method: 'POST',
         mode: 'no-cors',
         headers: {
+          'Authorization': 'Bearer ' + token,
           'Accept': 'application/json',
           'Content-type': 'application/json'
         },
         body: JSON.stringify({
-          "date": this.state.currDate,
-          "signature": this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
-          "user": this.props.user
+          "date": date_formater,
+          "signature": signature,
+          "user": userId
         })
-      });
-      console.log(result)
+      })
+      console.log("BRAVO:" + result);
     } catch (e) {
       console.log(e)
     }
