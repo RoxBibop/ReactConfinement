@@ -6,9 +6,14 @@ import logout from '../res/logoutLogo.png';
 
 class SignHisto extends React.Component {
 	async componentDidMount(){
-		const url = "https://ancient-journey-28500.herokuapp.com/api/presences";
-		const response = await fetch(url);
-		const signatures = await response.json();
+		const token = window.sessionStorage.getItem("token"),
+		url = "https://ancient-journey-28500.herokuapp.com/api/presences",
+		response = await fetch(url, {
+			headers: {
+				"Authorization": 'Bearer ' + token,
+			}
+		}),
+		signatures = await response.json();
 		console.log(signatures);
 	} 
 	render() {  

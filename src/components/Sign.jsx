@@ -3,12 +3,17 @@ import SignatureCanvas from 'react-signature-canvas';
 import '../style/sign.css';
 import jwt from 'jwt-decode';
 import logout from '../res/logoutLogo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 class Sign extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currDate : this.date() };
+    this.state = { currDate : this.date(),
+      hidden : true,
+    };
     this.trim = this.trim.bind(this);
+    this.close = this.close.bind(this);
   }
 
   state = { trimmedDataURL: null }
@@ -25,27 +30,39 @@ class Sign extends React.Component {
           signature = this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
           token = window.sessionStorage.getItem("token"),
           user = jwt(token),
-          userId = user.userId;
+          userId = user.userId,
+          json = {
+            "date": date_formater,
+            "signature": signature,
+            "user": `api/users/${userId}`
+          }
     try {
       var url = "https://ancient-journey-28500.herokuapp.com/api/presences";
       var result = await fetch(url, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Authorization': 'Bearer ' + token,
           'Accept': 'application/json',
           'Content-type': 'application/json'
         },
-        body: JSON.stringify({
-          "date": date_formater,
-          "signature": signature,
-          "user": userId
-        })
+        body: JSON.stringify(json)
+      }).then(function(response) {
+        console.log(response.status)
+        console.log(response);
+      });
+      this.setState({
+        hidden: false
       })
-      console.log("BRAVO:" + result);
+      this.clear()
     } catch (e) {
       console.log(e)
     }
+  }
+
+  close(){
+    this.setState({
+      hidden: true
+    })
   }
 
   date = () => {
@@ -81,6 +98,10 @@ class Sign extends React.Component {
     const { trimmedDataURL } = this.state;
     return (
       <div className="sign">
+        <div hidden={this.state.hidden} className="signSaved display">
+          <p>Votre signature a bien été enregistré.</p>
+          <FontAwesomeIcon className="close" onClick={this.close} icon={faTimes}/>
+        </div>
         <div className="logout" onClick={this.props.logout}>
           <img src={logout} alt="Logo de déconnexion" className="logoutLogo"/>
           <p className="deco">Déconnexion</p>
